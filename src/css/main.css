@@ -1,0 +1,12 @@
+.flexClass{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+form{
+    border: 0.2rem black solid;
+    padding: 2rem;
+}
