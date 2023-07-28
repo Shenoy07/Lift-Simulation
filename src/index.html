@@ -6,15 +6,21 @@
 <script src="./js/main.js" defer></script>
 </head>
 <body >
-        <div class="flexClass">
+        <div class="flexClass" id="formDiv">
             <form class="flexClass">
                 <label for="numberOfFloors">Enter Number Of Floors:</label><br>
-                <input type="number" id="numberOfFloors" name="numberOfFloors" class="floor-input"><br>
+                <input type="number" id="numberOfFloors" name="numberOfFloors" class="floor-input" required><br>
                 <label for="numberOfLifts">Enter Number Of Lifts:</label><br>
-                <input type="numberOfLifts" id="numberOfLifts" name="numberOfLifts" class="lift-input"><br>
-                <input type="submit" value="Submit" class="create-button">
+                <input type="numberOfLifts" id="numberOfLifts" name="numberOfLifts" class="lift-input" required><br>
+                <!-- <input type="submit" value="Submit" class="create-button"> -->
+                <button onclick="submission()" type="button" id="myButton">Submit</button>
             </form>
         </div>
+        
+        <!-- <button onclick="hideDiv()">Hide Div</button>
+
+        <div id="myDiv">This is the div you want to hide.</div> -->
+
 
 
 </body>
