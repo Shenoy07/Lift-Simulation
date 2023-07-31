@@ -6,7 +6,8 @@ const submission=()=>{
 
     const val = inputValidation(floorCount, liftCount)
     if(val){
-        hideDiv("formDiv");
+        // hideDiv("formDiv");
+        hideDivv("formDiv","layoutDiv")
     }
     
 }
@@ -44,3 +45,16 @@ function hideDiv(id) {
         divToHide.style.display = "none";
     }
 }
+
+function hideDivv(id1,id2) {
+    const divToHide1 = document.getElementById(id1);
+    const divToHide2 = document.getElementById(id2)
+    if (divToHide1.style.display !=='none') {
+        divToHide1.style.display = "none";
+        divToHide2.style.display = "block";
+    }else{
+        divToHide1.style.display = 'block';
+        divToHide2.style.display = 'none';
+    }
+}
+
