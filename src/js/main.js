@@ -58,3 +58,14 @@ function hideDivv(id1,id2) {
     }
 }
 
+function showFloorNumber(button, direction){
+    const floorDiv = button.parentElement.nextElementSibling.nextElementSibling;
+    const floorNumber = floorDiv.querySelector('.floorName div').textContent.trim();
+    const numericFloor = floorNumber.replace(/\D/g, ''); // Remove non-digit characters
+
+    if (direction === 'up') {
+        alert(`Clicked "up" button on floor ${numericFloor}`);
+    } else if (direction === 'down') {
+        alert(`Clicked "down" button on floor ${numericFloor}`);
+    }
+}
