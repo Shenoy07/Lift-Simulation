@@ -22,12 +22,15 @@ section{
     margin-top: 0.5rem;
     margin-bottom: 1rem;
     height: 6rem;
+    /* position: relative; */
     
 }
 
 .lift{
    background-color: turquoise;
    width: 3rem;
+   height: 6rem;
+   /* position: absolute; */
    /* height: 4rem; */
    /* border: 0.063 solid black; */
    /* padding: 0.625rem; */
@@ -45,6 +48,7 @@ section{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    position: relative;
     /* align-items: center; */
     /* background-color: blue; */
 }
