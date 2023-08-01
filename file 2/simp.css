@@ -19,17 +19,18 @@ section{
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    margin-top: 0.5rem;
-    margin-bottom: 1rem;
-    height: 6rem;
+    /* margin-top: 0.5rem; */
+    /* margin-bottom: 1rem; */
+    /* height: 6rem; */
+    height: 100px
     /* position: relative; */
     
 }
 
 .lift{
    background-color: turquoise;
-   width: 3rem;
-   height: 6rem;
+   width: 50px;
+   height: 80px;
    /* position: absolute; */
    /* height: 4rem; */
    /* border: 0.063 solid black; */
@@ -48,15 +49,12 @@ section{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    position: relative;
+    align-items: flex-end;
+    /* position: relative; */
     /* align-items: center; */
     /* background-color: blue; */
 }
-.box {
-    width: 1rem;
-    height: 3rem;
-    border: 1px solid black;
-  }
+/* */
 
 
 .floorName{

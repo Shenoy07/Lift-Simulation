@@ -8,6 +8,7 @@ function showFloorNumber(button, direction){
     } else if (direction === 'down') {
         alert(`Clicked "down" button on floor ${numericFloor}`);
     }
+    return numericFloor;
 }
 
 
@@ -40,15 +41,49 @@ findPosition("floor2");
 //     },10);
 // }
 
-function moveLiftToFloor(floorNumber) {
-    const lift = document.querySelector('.lift');
-    const liftBottom = lift.getBoundingClientRect().bottom;
-    const floorElement = document.getElementById(`floor${floorNumber}`);
-    const floorBottom = floorElement.getBoundingClientRect().bottom;
+// function moveLiftToFloor(floorNumber) {
+//     const lift = document.querySelector('.lift');
+//     console.log("const lift",lift)
+//     const liftBottom = lift.getBoundingClientRect().bottom;
+//     console.log("const ")
+//     const floorElement = document.getElementById(`floor${floorNumber}`);
+//     const floorBottom = floorElement.getBoundingClientRect().bottom;
 
-    const translationDistance = floorBottom - liftBottom;
-    lift.style.transition = 'transform 1s'; // Add a transition for smooth movement
-    lift.style.transform = `translateY(${translationDistance}px)`;
+//     const translationDistance = floorBottom - liftBottom;
+//     lift.style.transition = 'transform 1s'; // Add a transition for smooth movement
+//     lift.style.transform = `translateY(${translationDistance}px)`;
+// }
+
+// moveLiftToFloor(2); // Move the lift to floor 2
+
+
+function showFloorNumber(button, direction){
+    const floorDiv = button.parentElement.nextElementSibling.nextElementSibling;
+    const floorNumber = floorDiv.querySelector('.floorName div').textContent.trim();
+    const numericFloor = floorNumber.replace(/\D/g, ''); // Remove non-digit characters
+
+    return numericFloor;
 }
 
-moveLiftToFloor(2); // Move the lift to floor 2
+
+function moveLift(button, direction)
+{
+
+    if(direction =="up" || direction=="down"){
+        const floorNumber = showFloorNumber(button, direction);
+        const liftElement = document.querySelector('.lift');
+        liftElement.style.transform = `translateY(${-(floorNumber-1)*101.5}px)`;
+        liftElement.style.transition = 'transform 1s ease-in-out';
+    }   
+    // if(direction =="down"){
+    //     const floorNumber = showFloorNumber(button, direction);
+    //     const liftElement = document.querySelector('.lift');
+    //     liftElement.style.transform = `translateY(${-(floorNumber-1)*101.5}px)`;
+    // }
+    
+}
+
+function moveLiftDown(button,direction){
+
+}
+
