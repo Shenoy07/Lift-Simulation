@@ -1,0 +1,155 @@
+/* html{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+} */
+
+.flexClass{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    /* background-color: red; */
+}
+
+
+.btn{
+    font-weight:bolder
+}
+form{
+    border: 0.2rem black solid;
+    padding: 2rem;
+}
+
+#myDiv{
+    background-color: black;
+    padding-top: 2rem;
+
+}
+
+
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+section{
+    display: flex;
+    flex-direction: column;
+    /* border: 1rem blue solid; */
+    width: 60%;
+    border: 1px solid black;
+}
+
+
+.floors{
+    border-bottom: 0.1rem black solid;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    height: 99px;
+    
+}
+
+.lift{
+   /* background-color: turquoise; */
+   width: 50px;
+   height: 80px;
+   display: flex;
+   flex-direction: row;
+   /* border: 1px solid red; */
+   background-color: blueviolet
+   /* position: absolute; */
+   /* height: 4rem; */
+   /* border: 0.063 solid black; */
+   /* padding: 0.625rem; */
+   /* margin: 0.625rem; */
+
+}
+.upAndDown{
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+    width: 5rem;
+    
+    /* border-right: 1px black solid; */
+}
+
+.liftContainer{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: flex-end;
+    /* position: relative; */
+    /* align-items: center; */
+    /* background-color: blue; */
+}
+/* */
+
+
+.floorName{
+    
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 4rem;
+    
+}
+
+.door-left{
+    /* border: 1px black solid; */
+    width: 50%;
+    height: 100%;  
+    background-color: black
+    /* animation: slideLeft 4s ; */
+    
+}
+
+@keyframes slideLeft{
+    0% {
+        background-color: red; /* Initial color */
+        width: 100%;
+    }
+    50%{
+        background-color: red;
+        width: 0%;
+    }
+    100% {
+        background-color: red; /* Color returning */
+        width: 100%;
+    }
+}
+
+
+.door-right{
+    /* border: 1px black solid; */
+    width: 50%;
+    height: 100%;
+    background-color: black
+    /* animation: slideRight 4s ; */
+    /* background-color: blue; */
+    
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
