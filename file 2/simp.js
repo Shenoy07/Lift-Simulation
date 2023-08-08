@@ -19,12 +19,12 @@ console.log("top",rect.top, "right",rect.right, "bottom" ,rect.bottom,"left", re
 
 
 
-function findPosition(id){
-    element = document.getElementById(id)
-    var rect = element.getBoundingClientRect();
-    console.log(rect.bottom);
-    return rect.bot;
-}
+// function findPosition(id){
+//     element = document.getElementById(id)
+//     var rect = element.getBoundingClientRect();
+//     console.log(rect.bottom);
+//     return rect.bot;
+// }
 
 findPosition("floor2");
 
@@ -72,18 +72,19 @@ function moveLift(button, direction)
     if(direction =="up" || direction=="down"){
         const floorNumber = showFloorNumber(button, direction);
         const liftElement = document.querySelector('.lift');
+        console.log(typeof(floorNumber), floorNumber)
+        
         liftElement.style.transform = `translateY(${-(floorNumber-1)*101.5}px)`;
-        liftElement.style.transition = 'transform 1s ease-in-out';
+        liftElement.style.transition = 'transform 2s ease-in-out';
+        
+        // doorOpen();
+
+        
     }   
-    // if(direction =="down"){
-    //     const floorNumber = showFloorNumber(button, direction);
-    //     const liftElement = document.querySelector('.lift');
-    //     liftElement.style.transform = `translateY(${-(floorNumber-1)*101.5}px)`;
-    // }
+    
     
 }
 
-function moveLiftDown(button,direction){
 
-}
+
 

@@ -38,14 +38,6 @@ const inputValidation =(floorCount, liftCount)=>{
 }
 
 
-function hideDiv(id) {
-    const divToHide = document.getElementById(id);
-
-    if (divToHide) {
-        divToHide.style.display = "none";
-    }
-}
-
 function hideDivv(id1,id2) {
     const divToHide1 = document.getElementById(id1);
     const divToHide2 = document.getElementById(id2)

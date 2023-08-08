@@ -48,12 +48,22 @@
         </div>
         
         <div id="floor1"class="floors">
-            <div><button class="upAndDown" onclick="showFloorNumber(this, 'up')">up</button>
+            <div><button class="upAndDown" onclick="moveLift(this, 'up')">up</button>
             </div>
-            <div class="liftContainer">
-                <div class="lift" id="lift"></div>
-                <div class="lift"></div>
-                <div class="lift"></div>
+            <div class="liftContainer" >
+                <div class="lift"  data-liftNumber="1">
+                    <div class="door-left"></div>
+                    <div class="door-right"></div>
+                </div>
+                <div class="lift" data-liftNumber="2">
+                    <div class="door-left"></div>
+                    <div class="door-right"></div>
+                </div>
+                
+                <div class="lift" data-liftNumber="3">
+                    <div class="door-left"></div>
+                    <div class="door-right"></div>
+                </div>
                 
         </div>
         <div class="floorName">floor <div>1</div></div>
