@@ -243,8 +243,25 @@ function loadpage(numberOfFloors, numberOfLifts){
 
                 for (let l = 0; l < numberOfLifts; l++) {
                     const currentfloor = liftArray[l].getAttribute("data-liftfloor");
-                  
-                    if (liftArray[l].getAttribute("data-liftAvailability") !== "busy") {
+                    console.log(currentfloor)
+                    if(floorNumber==currentfloor && liftArray[l].getAttribute("data-liftAvailability") !== "busy")
+                    {
+                        
+                        const floorDiff = Math.abs(floorNumber - currentfloor);
+                        
+                        setTimeout(() => {
+                            liftArray[l].setAttribute("data-liftAvailability", "busy");
+                            openDoors(liftArray, l);
+                          }, floorDiff * 2000);
+                      
+                          setTimeout(() => {
+                            closeDoors(liftArray, l);
+                            liftArray[l].setAttribute("data-liftAvailability", "Available");
+                          }, floorDiff * 2000 + 2500);
+                          break;
+                    }
+
+                    else if (liftArray[l].getAttribute("data-liftAvailability") !== "busy") {
                       const floorDiff = Math.abs(floorNumber - currentfloor);
                   
                       setTimeout(() => {
