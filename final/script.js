@@ -140,9 +140,38 @@ function loadpage(numberOfFloors, numberOfLifts){
     const section1 = document.createElement("SECTION");
     section1.setAttribute("id","layoutDiv");
     const body2 = document.querySelector("body");
+
+    const bbdiv = document.createElement("div");
+    body2.appendChild(bbdiv);
+
+    const backButton = document.createElement("BUTTON");
+    backButton.textContent = "Reset";
+    backButton.setAttribute("class","backbut");
+    // backButton.setAttribute("class","upAndDown")
+    bbdiv.appendChild(backButton)
+    bbdiv.setAttribute("class","backbutton")
+
+
+    backButton.addEventListener('click',()=>{
+    const bb = document.querySelector('body');
+    bb.removeChild(section1);
+    const form = document.querySelector(".flexClass");
+    const input1 = document.querySelector(".input1")
+    const input2 = document.querySelector(".input2")
+    input1.value = ''; 
+    input2.value = '';
+    form.style.display = "block";
+    backButton.style.display = "none";
+    });
+
+
+
     // section1.style.backgroundColor ="red"
     body2.appendChild(section1);
-  
+    
+            // --------------------------------------------------------------------------------------------------
+
+            // /------------------------------------------------------------------------------------------------
 
     
     for(let i = numberOfFloors; i >=1;i-- ){
@@ -191,6 +220,7 @@ function loadpage(numberOfFloors, numberOfLifts){
         liftContainer.setAttribute("class","liftContainer")
         // liftContainer.style.backgroundColor= "green";
         floor.appendChild(liftContainer);
+
 
         const fn = document.createElement("div");
         fn.setAttribute("class","floorName");
@@ -256,8 +286,12 @@ function loadpage(numberOfFloors, numberOfLifts){
                       
                           setTimeout(() => {
                             closeDoors(liftArray, l);
-                            liftArray[l].setAttribute("data-liftAvailability", "Available");
+                            // liftArray[l].setAttribute("data-liftAvailability", "Available");
                           }, floorDiff * 2000 + 2500);
+                          setTimeout(()=>{
+                            liftArray[l].setAttribute("data-liftAvailability", "Available");
+                          },5000)
+                          
                           break;
                     }
 
@@ -277,9 +311,11 @@ function loadpage(numberOfFloors, numberOfLifts){
                   
                       setTimeout(() => {
                         closeDoors(liftArray, l);
-                        liftArray[l].setAttribute("data-liftAvailability", "Available");
+                        // liftArray[l].setAttribute("data-liftAvailability", "Available");
                       }, floorDiff * 2000 + 2500);
-                  
+                      setTimeout(()=>{
+                        liftArray[l].setAttribute("data-liftAvailability", "Available");
+                      },(floorDiff*2000)+5000)
                       break;
                     }
                   }
@@ -288,21 +324,7 @@ function loadpage(numberOfFloors, numberOfLifts){
             });
         });
     }
-    const backButton = document.createElement("BUTTON");
-    backButton.textContent = "Reset";
-    backButton.setAttribute("class","upAndDown")
-    section1.appendChild(backButton)
-    backButton.addEventListener('click',()=>{
-    const bb = document.querySelector('body');
-    bb.removeChild(section1);
-    const form = document.querySelector(".flexClass");
-    const input1 = document.querySelector(".input1")
-    const input2 = document.querySelector(".input2")
-    input1.value = ''; 
-    input2.value = '';
-    form.style.display = "block"
 
-    })
 
 }
 
@@ -323,97 +345,9 @@ function closeDoors(liftArray,l){
 //-----------layout ends------------------------------
 
 
-function hideDivv(id1,id2) {
-    const divToHide1 = document.getElementById(id1);
-    const divToHide2 = document.getElementById(id2);
-
-    if (divToHide1.style.display !=='none') {
-        divToHide1.style.display = "none";
-        divToHide2.style.display = "block";
-    }else{
-        divToHide1.style.display = 'block';
-        divToHide2.style.display = 'none';
-    }
-}
-
 
 
 //const navButtons = document.querySelector("")
 
 //------------------------------------------------------------------------------------------
 
-
-
-
-                // liftArray.push(liftArray[0])
-                // console.log(liftArray)
-
-                
-                // const liftElement = document.querySelectorAll('.lift');
-                // console.log(liftElement)
-                // const liftArray = Array.from(liftElement)
-                
-                //         for(let l = 0; l<numberOfLifts; l++){
-                //             if(liftElement[l].getAttribute("data-liftAvailability")!="busy"){
-                //                 liftElement[l].style.transform = `translateY(${-(floorNumber-1)*101.5}px)`;
-                //                 liftElement[l].style.transition = 'transform 2s ease-in-out';
-                //                 liftElement[l].setAttribute("data-liftfloor",floorNumber);
-                //                 liftElement[l].setAttribute("data-liftAvailability","busy");
-                //                 console.log(l);
-                //             }
-                            
-
-                //         }
-                // console.log(liftArray)
-                // liftArray.push(liftArray[0])
-                // console.log(liftArray)
-            // liftArray.pop(liftArray[0]) 
-
-
-                            // for(let l = 0; l<numberOfLifts; l++){
-                //     const currentfloor = liftArray[l].getAttribute("data-liftfloor");
-                //     if(liftArray[l].getAttribute("data-liftAvailability") !="busy"){
-                //         const floorDiff = Math.abs(floorNumber-currentfloor) 
-
-                //         setTimeout(()=>{
-                //             openDoors(liftArray,l);
-                //             liftArray[l].setAttribute("data-liftAvailability","busy");
-                //         },0)
-                        
-                //         setTimeout(()=>{
-                //             closeDoors(liftArray,l);
-                            
-                //         },2500)
-
-                //         setTimeout(()=>{
-                //             liftArray[l].style.transition = `transform ${floorDiff*2}s ease-in-out`;
-                //             liftArray[l].style.transform = `translateY(${-(floorNumber - 1) * 101.5}px)`;
-                //             liftArray[l].setAttribute("data-liftAvailability","busy");
-                //             liftArray[l].setAttribute("data-liftfloor",floorNumber);
-                            
-                //             // setTimeout(()=>{
-                //             //     openDoors(liftArray,l);
-                //             //     liftArray[l].setAttribute("data-liftAvailability","busy");
-                //             // },0)
-                //             // setTimeout(()=>{
-                //             //     closeDoors(liftArray,l);
-                                
-                //             // },2500)
-                //             setTimeout(()=>{
-                //                 openDoors(liftArray,l);
-                //                 closeDoors(liftArray,l);
-                //             },0)
-                //         },floorDiff*2000)
-
-
-
-                //         // setTimeout(()=>{
-                //         //     liftArray[l].setAttribute("data-liftAvailability","Available");
-  
-                //         // },floorDiff*2*1000+7500);
-                //         break;
-                        
-                //     }
-
-
-                // }
