@@ -43,7 +43,7 @@ section{
     display: flex;
     flex-direction: column;
     /* border: 1rem blue solid; */
-    width: 60%;
+    width: 100%;
     border: 1px solid black;
 }
 

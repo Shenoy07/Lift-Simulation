@@ -82,29 +82,19 @@ const inputValidation =(floorCount, liftCount)=>{
     } 
 }
 
+// function inputValidation(numberOfFloors, numberOfLifts){
+//   if (numberOfFloors < numberOfLifts){
+//     alert("number of lifts cannot be less than number of floors");
+    
+//   }
+//   else{
+//     return true;
+//   }
+
+// }
+
 
 const body1 = document.querySelector("body")
-// body1.style.backgroundColor = "red"
-
-// const form1 = document.getElementsByClassName("flexClass")
-
-console.log(1)
-
-// form1.style.back
-
-
-// formButton.addEventListener('click',(event)=>{
-
-//     //     const numberOfFloors = input1.value;
-//     //     const numberOfLifts = input2.value;
-//     //     // const validity = inputValidation(numberOfFloors,numberOfLifts)
-//     //     console.log(validity)
-//     //     console.log(numberOfFloors)
-//     //     console.log(numberOfLifts)
-//     //     event.preventDefault()
-        
-//     // });
-
 
 const button1 = document.querySelector(".formButton");
 const input1 = document.querySelector(".input1")
@@ -112,11 +102,11 @@ const input2 = document.querySelector(".input2")
 
 
 button1.addEventListener('click',(event)=>{
-
-        const numberOfFloors = input1.value;
-        const numberOfLifts = input2.value;
-        console.log(numberOfFloors)
-        console.log(numberOfLifts)
+ 
+        const numberOfFloors = parseInt(input1.value);
+        const numberOfLifts = parseInt(input2.value);
+        console.log(numberOfFloors,"floors")
+        console.log(numberOfLifts,"lifts")
         if(inputValidation(numberOfFloors,numberOfLifts)){
             loadpage(numberOfFloors,numberOfLifts)
             const bb = document.querySelector('body');
@@ -178,8 +168,8 @@ function loadpage(numberOfFloors, numberOfLifts){
         const floor = document.createElement("div"); //creating floor div
         section1.appendChild(floor);                //appending floor to section
         floor.setAttribute("class","floors");
-        floor.setAttribute("data-floorNo",i)       //setting the class for the floors
-
+        floor.setAttribute("data-floorNo",i);       //setting the class for the floors
+        
         const upAndDown = document.createElement("div") //creating a upAndDown div for the floor
         upAndDown.setAttribute("class","upAndDown")     //setting the class for the upAnd Down div where the buttons will go
         floor.appendChild(upAndDown);                        //appending the upAndDown div for the floor 
@@ -190,6 +180,8 @@ function loadpage(numberOfFloors, numberOfLifts){
             const buttonDown = document.createElement("BUTTON");
             buttonDown.textContent = "Down";
             buttonDown.setAttribute("class","Btn");
+            buttonDown.setAttribute("data-assigned","false");
+            floor.setAttribute("data-liftAssigned","false")
             buttonDown.setAttribute("data-buttonFloor",i);
             upAndDown.appendChild(buttonDown);
             // upAndDown.style.backgroundColor = "yellow"
@@ -200,6 +192,8 @@ function loadpage(numberOfFloors, numberOfLifts){
             buttonUp.textContent = "Up";
             buttonUp.setAttribute("class","Btn");
             buttonUp.setAttribute("data-buttonFloor",i);
+            buttonUp.setAttribute("data-assigned","true");
+            floor.setAttribute("data-liftAssigned","true");
             upAndDown.appendChild(buttonUp);
         }
         else
@@ -207,9 +201,11 @@ function loadpage(numberOfFloors, numberOfLifts){
             const buttonUp = document.createElement("BUTTON");
             buttonUp.setAttribute("class","Btn");
             buttonUp.setAttribute("data-buttonFloor",i);
+            // buttonUp.setAttribute("data-assigned","false");
             const buttonDown = document.createElement("BUTTON");
             buttonDown.setAttribute("class","Btn");
             buttonDown.setAttribute("data-buttonFloor",i);
+            buttonDown.setAttribute("data-assigned","false");
             buttonUp.textContent = "Up";
             buttonDown.textContent = "Down";
             upAndDown.appendChild(buttonUp);
@@ -256,77 +252,165 @@ function loadpage(numberOfFloors, numberOfLifts){
 
 
 
-        const buttonPush = document.querySelectorAll(".Btn");
+        // const buttonPush = document.querySelectorAll(".Btn");
         
 
-        buttonPush.forEach(butt => {
-            butt.addEventListener('click', () => {
+        // buttonPush.forEach(butt => {
+        //     butt.addEventListener('click', () => {
 
-                const liftElement = document.querySelectorAll('.lift');
-                const liftArray = Array.from(liftElement)
+        //         const liftElement = document.querySelectorAll('.lift');
+        //         const liftArray = Array.from(liftElement)
 
-                const floorNumber = butt.getAttribute("data-buttonFloor");
-                console.log("Button pushed on floor:", floorNumber);
+        //         const floorNumber = butt.getAttribute("data-buttonFloor");
+        //         console.log("Button pushed on floor:", floorNumber);
+
+        //       const floorr = document.querySelector("floors");
 
 
+        //         for (let l = 0; l < numberOfLifts; l++) {
+        //             const currentfloor = liftArray[l].getAttribute("data-liftfloor");
+        //             console.log(currentfloor)
 
-
-                for (let l = 0; l < numberOfLifts; l++) {
-                    const currentfloor = liftArray[l].getAttribute("data-liftfloor");
-                    console.log(currentfloor)
-                    if(floorNumber==currentfloor && liftArray[l].getAttribute("data-liftAvailability") !== "busy")
-                    {
+                    
+        //             if(floorNumber==currentfloor && liftArray[l].getAttribute("data-liftAvailability") !== "busy")
+        //             {
+        //                 // liftArray[l].setAttribute("data-assigned", "true");
+        //                 const floorDiff = Math.abs(floorNumber - currentfloor);
                         
-                        const floorDiff = Math.abs(floorNumber - currentfloor);
-                        
-                        setTimeout(() => {
-                            liftArray[l].setAttribute("data-liftAvailability", "busy");
-                            openDoors(liftArray, l);
-                          }, floorDiff * 2000);
+        //                 setTimeout(() => {
+        //                     liftArray[l].setAttribute("data-liftAvailability", "busy");
+        //                     openDoors(liftArray, l);
+        //                   }, floorDiff * 2000);
                       
-                          setTimeout(() => {
-                            closeDoors(liftArray, l);
-                            // liftArray[l].setAttribute("data-liftAvailability", "Available");
-                          }, floorDiff * 2000 + 2500);
-                          setTimeout(()=>{
-                            liftArray[l].setAttribute("data-liftAvailability", "Available");
-                          },5000)
+        //                   setTimeout(() => {
+        //                     closeDoors(liftArray, l);
+        //                     // liftArray[l].setAttribute("data-liftAvailability", "Available");
+        //                   }, floorDiff * 2000 + 2500);
+        //                   setTimeout(()=>{
+        //                     liftArray[l].setAttribute("data-liftAvailability", "Available");
+        //                   },5000)
                           
-                          break;
-                    }
+        //                   break;
+        //             }
 
-                    else if (liftArray[l].getAttribute("data-liftAvailability") !== "busy") {
-                      const floorDiff = Math.abs(floorNumber - currentfloor);
+        //             else if (liftArray[l].getAttribute("data-liftAvailability") !== "busy") {
+        //               const floorDiff = Math.abs(floorNumber - currentfloor);
                   
-                      setTimeout(() => {
-                        liftArray[l].setAttribute("data-liftAvailability", "busy");
-                        liftArray[l].style.transition = `transform ${floorDiff * 2}s ease-in-out`;
-                        liftArray[l].style.transform = `translateY(${-(floorNumber - 1) * 100}px)`;
-                        liftArray[l].setAttribute("data-liftfloor", floorNumber);
-                      }, 0);
+        //               setTimeout(() => {
+        //                 liftArray[l].setAttribute("data-liftAvailability", "busy");
+        //                 liftArray[l].style.transition = `transform ${floorDiff * 2}s ease-in-out`;
+        //                 liftArray[l].style.transform = `translateY(${-(floorNumber - 1) * 100}px)`;
+        //                 liftArray[l].setAttribute("data-liftfloor", floorNumber);
+        //               }, 0);
                   
-                      setTimeout(() => {
-                        openDoors(liftArray, l);
-                      }, floorDiff * 2000);
+        //               setTimeout(() => {
+        //                 openDoors(liftArray, l);
+        //               }, floorDiff * 2000);
                   
-                      setTimeout(() => {
-                        closeDoors(liftArray, l);
-                        // liftArray[l].setAttribute("data-liftAvailability", "Available");
-                      }, floorDiff * 2000 + 2500);
-                      setTimeout(()=>{
-                        liftArray[l].setAttribute("data-liftAvailability", "Available");
-                      },(floorDiff*2000)+5000)
-                      break;
-                    }
-                  }
+        //               setTimeout(() => {
+        //                 closeDoors(liftArray, l);
+        //                 // liftArray[l].setAttribute("data-liftAvailability", "Available");
+        //               }, floorDiff * 2000 + 2500);
+        //               setTimeout(()=>{
+        //                 liftArray[l].setAttribute("data-liftAvailability", "Available");
+        //               },(floorDiff*2000)+5000)
+        //               break;
+        //             }
+        //           }
                   
                   
-            });
-        });
+        //     });
+        // });
+
+        buttonClickk(numberOfFloors,numberOfLifts);
     }
 
 
 }
+
+
+
+
+
+function buttonClickk(numberOfFloors,numberOfLifts){
+  
+  const buttonPush = document.querySelectorAll(".Btn");
+        
+
+  buttonPush.forEach(butt => {
+      butt.addEventListener('click', () => {
+
+          const liftElement = document.querySelectorAll('.lift');
+          const liftArray = Array.from(liftElement)
+
+          const floorNumber = butt.getAttribute("data-buttonFloor");
+          console.log("Button pushed on floor:", floorNumber);
+
+        const floorr = document.querySelector("floors");
+
+
+          for (let l = 0; l < numberOfLifts; l++) {
+              const currentfloor = liftArray[l].getAttribute("data-liftfloor");
+              console.log(currentfloor)
+
+              
+              if(floorNumber==currentfloor && liftArray[l].getAttribute("data-liftAvailability") !== "busy")
+              {
+                  // liftArray[l].setAttribute("data-assigned", "true");
+                  const floorDiff = Math.abs(floorNumber - currentfloor);
+                  
+                  setTimeout(() => {
+                      liftArray[l].setAttribute("data-liftAvailability", "busy");
+                      openDoors(liftArray, l);
+                    }, floorDiff * 2000);
+                
+                    setTimeout(() => {
+                      closeDoors(liftArray, l);
+                      // liftArray[l].setAttribute("data-liftAvailability", "Available");
+                    }, floorDiff * 2000 + 2500);
+                    setTimeout(()=>{
+                      liftArray[l].setAttribute("data-liftAvailability", "Available");
+                    },5000)
+                    
+                    break;
+              }
+
+              else if (liftArray[l].getAttribute("data-liftAvailability") !== "busy") {
+                const floorDiff = Math.abs(floorNumber - currentfloor);
+            
+                setTimeout(() => {
+                  liftArray[l].setAttribute("data-liftAvailability", "busy");
+                  liftArray[l].style.transition = `transform ${floorDiff * 2}s ease-in-out`;
+                  liftArray[l].style.transform = `translateY(${-(floorNumber - 1) * 100}px)`;
+                  liftArray[l].setAttribute("data-liftfloor", floorNumber);
+                }, 0);
+            
+                setTimeout(() => {
+                  openDoors(liftArray, l);
+                }, floorDiff * 2000);
+            
+                setTimeout(() => {
+                  closeDoors(liftArray, l);
+                  // liftArray[l].setAttribute("data-liftAvailability", "Available");
+                }, floorDiff * 2000 + 2500);
+                setTimeout(()=>{
+                  liftArray[l].setAttribute("data-liftAvailability", "Available");
+                },(floorDiff*2000)+5000)
+                break;
+              }
+            }
+            
+            
+      });
+  });
+}
+
+
+
+
+
+
+
 
 
 function openDoors(liftArray,l){
@@ -337,10 +421,17 @@ function openDoors(liftArray,l){
 }
 
 function closeDoors(liftArray,l){
+    const floorNumber = parseInt(liftArray[l].getAttribute("data-liftfloor"));
+    liftArray[l].removeAttribute("data-assigned");
     liftArray[l].children[0].style.transform=`translateX(${0}%)`;
     liftArray[l].children[1].style.transform=`translateX(${0}%)`;
     liftArray[l].children[0].style.transition=`transform 2.5s`;
 }
+
+
+
+
+
 
 //-----------layout ends------------------------------
 
