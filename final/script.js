@@ -405,3 +405,26 @@ const inputValidation = (floorCount, liftCount) => {
     return true;
   }
 };
+
+
+
+function adjustPlaceholderText() {
+  const input1 = document.querySelector('.input1');
+  const input2 = document.querySelector('.input2');
+  const isMobile = window.innerWidth <= 1000; // Adjust the breakpoint to 1000px
+
+  if (isMobile) {
+    input1.placeholder = 'Works Best When 5 or Less';
+    input2.placeholder = 'Works Best When 3 or Less';
+  } else {
+    input1.placeholder = '7 Or Less For Best View';
+    input2.placeholder = '6 Or Less For Best View';
+  }
+}
+
+// Initial adjustment
+adjustPlaceholderText();
+
+// Adjust on window resize
+window.addEventListener('resize', adjustPlaceholderText);
+
