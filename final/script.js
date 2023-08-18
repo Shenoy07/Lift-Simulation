@@ -391,6 +391,22 @@ function closeDoors(liftArray,l){
 
 
 
+// const inputValidation = (floorCount, liftCount) => {
+//   if (isNaN(floorCount) || isNaN(liftCount) || floorCount === "" || liftCount === "") {
+//     alert("Input cannot be empty");
+//     return false;
+//   } else if (floorCount <= 0 || liftCount <= 0) {
+//     alert("Numbers should be positive and also greater than zero");
+//     return false;
+//   } else if (floorCount < liftCount) {
+//     alert("Number of lifts cannot be more than floors");
+//     return false;
+//   } else {
+//     return true;
+//   }
+// };
+
+
 const inputValidation = (floorCount, liftCount) => {
   if (isNaN(floorCount) || isNaN(liftCount) || floorCount === "" || liftCount === "") {
     alert("Input cannot be empty");
@@ -401,10 +417,17 @@ const inputValidation = (floorCount, liftCount) => {
   } else if (floorCount < liftCount) {
     alert("Number of lifts cannot be more than floors");
     return false;
+  } else if (window.innerWidth <= 1000 && liftCount > 3) {
+    alert("On mobile, for flawless experience, number of lifts should be 3 or less");
+    return false;
+  } else if (window.innerWidth > 1000 && liftCount > 10) {
+    alert("On desktop,for flawless experience, number of lifts should be 10 or less");
+    return false;
   } else {
     return true;
   }
 };
+
 
 
 
